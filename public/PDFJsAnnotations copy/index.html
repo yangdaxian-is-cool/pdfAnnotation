@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="./utils/bootstrap.min.css">
+	<link rel="stylesheet" href="./utils/font-awesome.min.css">
+	<link rel="stylesheet" href="./utils/prettify.min.css">
+	<link rel="stylesheet" href="./styles.css">
+	<link rel="stylesheet" href="./pdfannotate.css">
+</head>
+<body>
+<div class="toolbar">
+	<div class="tool">
+		<span>pdf</span>
+	</div>
+	<div class="tool">
+		<label for="">线粗细</label>
+		<input type="number" class="form-control text-right" value="1" id="brush-size" max="50">
+	</div>
+	<div class="tool">
+		<label for="">字体大小</label>
+		<select id="font-size" class="form-control">
+			<option value="10">10</option>
+			<option value="12">12</option>
+			<option value="16" selected>16</option>
+			<option value="18">18</option>
+			<option value="24">24</option>
+			<option value="32">32</option>
+			<option value="48">48</option>
+			<option value="64">64</option>
+			<option value="72">72</option>
+			<option value="108">108</option>
+		</select>
+	</div>
+	<div class="tool">
+		<button class="color-tool active" style="background-color: #212121;"></button>
+		<button class="color-tool" style="background-color: red;"></button>
+		<button class="color-tool" style="background-color: blue;"></button>
+		<button class="color-tool" style="background-color: green;"></button>
+		<button class="color-tool" style="background-color: yellow;"></button>
+	</div>
+	<div class="tool">
+		<button class="tool-button active"><i class="fa fa-hand-paper-o" title="Free Hand" onclick="enableSelector(event)"></i></button>
+	</div>
+	<div class="tool">
+		<button class="tool-button"><i class="fa fa-pencil" title="Pencil" onclick="enablePencil(event)"></i></button>
+	</div>
+	<div class="tool">
+		<button class="tool-button"><i class="fa fa-font" title="Add Text" onclick="enableAddText(event)"></i></button>
+	</div>
+	<div class="tool">
+		<button class="tool-button"><i class="fa fa-long-arrow-right" title="Add Arrow" onclick="enableAddArrow(event)"></i></button>
+	</div>
+	<div class="tool">
+		<button class="tool-button"><i class="fa fa-square-o" title="Add rectangle" onclick="enableRectangle(event)"></i></button>
+	</div>
+	<div class="tool">
+		<button class="tool-button"><i class="fa fa-picture-o" title="Add an Image" onclick="addImage(event)"></i></button>
+	</div>
+	<div class="tool">
+		<button class="btn btn-danger btn-sm" onclick="deleteSelectedObject(event)"><i class="fa fa-trash"></i></button>
+	</div>
+	<!-- <div class="tool">
+		<button class="btn btn-danger btn-sm" onclick="selectPdfElement()">选中</button>
+	</div> -->
+	<div class="tool">
+		<button class="btn btn-danger btn-sm" onclick="clearPage()">Clear Page</button>
+	</div>
+	<div class="tool">
+		<button class="btn btn-info btn-sm" onclick="showPdfData()">{}</button>
+	</div>
+	<div class="tool">
+		<button class="btn btn-light btn-sm" onclick="savePDF()"><i class="fa fa-save"></i> 导出PDF</button>
+		<button class="btn btn-light btn-sm" onclick="saveData()"><i class="fa fa-save"></i> 保存</button>
+	</div>
+</div>
+<div>
+	<ul id="bz-list">
+		
+	</ul>
+</div>
+<div id="pdf-container"></div>
+
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="dataModalLabel">PDF annotation data</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<pre class="prettyprint lang-json linenums">
+				</pre>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="./utils/jquery.min.js"></script>
+<script src="./utils/popper.min.js"></script>
+<script src="./utils/bootstrap.min.js"></script>
+<script src="./utils/pdf.min.js"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc = './utils/pdf.worker.min.js';</script>
+<script src="./utils/fabric.min.js"></script>
+<script src="./utils/jspdf.umd.min.js"></script>
+<script src="./utils/run_prettify.js"></script>
+<script src="./utils/prettify.min.js"></script>
+<script src="./arrow.fabric.js"></script>
+<script src="./sample_output.js"></script>
+<script src="./pdfannotate.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
